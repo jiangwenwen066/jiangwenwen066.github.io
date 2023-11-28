@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>给QLNU2023级新生re入门题wp | WenWenJiang's Blog</title><meta name="author" content="WenWenJiang"><meta name="copyright" content="WenWenJiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="RE【你看我反不反就完了】字符串对比：拖到die中，发现是无壳，64位，拖动到64位的ida中进行反编译  成功打开后，就找到了最开始界面，就已经看到了flag  可以按一下f5进入伪代码的窗口： 这样就得到了flag：QLNU{he11ow_re!} 可以win+r 然后输入cmd进行命令界面，然后把程序拖动进去，输入得到的flag，显示输入正确  【阿斯克】ascll码表对比：还是一样的查壳，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给QLNU2023级新生re入门题wp">
+<meta property="og:url" content="https://jiangwenwen066.github.io/2023/10/02/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98wp/index.html">
+<meta property="og:site_name" content="WenWenJiang&#39;s Blog">
+<meta property="og:description" content="RE【你看我反不反就完了】字符串对比：拖到die中，发现是无壳，64位，拖动到64位的ida中进行反编译  成功打开后，就找到了最开始界面，就已经看到了flag  可以按一下f5进入伪代码的窗口： 这样就得到了flag：QLNU{he11ow_re!} 可以win+r 然后输入cmd进行命令界面，然后把程序拖动进去，输入得到的flag，显示输入正确  【阿斯克】ascll码表对比：还是一样的查壳，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jiangwenwen066.github.io/img/2023wp.png">
+<meta property="article:published_time" content="2023-10-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-25T17:48:39.226Z">
+<meta property="article:author" content="WenWenJiang">
+<meta property="article:tag" content="STUDY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jiangwenwen066.github.io/img/2023wp.png"><link rel="shortcut icon" href="/img/touxiang.jpg"><link rel="canonical" href="https://jiangwenwen066.github.io/2023/10/02/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98wp/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '给QLNU2023级新生re入门题wp',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-26 01:48:39'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/2023wp.png')"><nav id="nav"><span id="blog-info"><a href="/" title="WenWenJiang's Blog"><span class="site-name">WenWenJiang's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">给QLNU2023级新生re入门题wp</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-01T16:00:00.000Z" title="发表于 2023-10-02 00:00:00">2023-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-25T17:48:39.226Z" title="更新于 2023-11-26 01:48:39">2023-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STUDY/re/">re</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="给QLNU2023级新生re入门题wp"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h1><h2 id="【你看我反不反就完了】字符串对比："><a href="#【你看我反不反就完了】字符串对比：" class="headerlink" title="【你看我反不反就完了】字符串对比："></a>【你看我反不反就完了】字符串对比：</h2><p>拖到die中，发现是无壳，64位，拖动到64位的ida中进行反编译</p>
+<p><img src="/./../image/1700934421614-37.png" alt="img"></p>
+<p>成功打开后，就找到了最开始界面，就已经看到了flag</p>
+<p><img src="/./../image/1700934421610-1.png" alt="img"></p>
+<p>可以按一下f5进入伪代码的窗口：</p>
+<p>这样就得到了flag：QLNU{he11ow_re!}</p>
+<p>可以win+r 然后输入cmd进行命令界面，然后把程序拖动进去，输入得到的flag，显示输入正确</p>
+<p><img src="/./../image/1700934421610-2.png" alt="img"></p>
+<h2 id="【阿斯克】ascll码表对比："><a href="#【阿斯克】ascll码表对比：" class="headerlink" title="【阿斯克】ascll码表对比："></a>【阿斯克】ascll码表对比：</h2><p>还是一样的查壳，是64位无壳，直接进行反编译</p>
+<p><img src="/./../image/1700934421610-3.png" alt="img"></p>
+<p>这里看到了有一个v5的数组，这个就是所谓的ascll码</p>
+<p>ascll码81对应的字符的‘Q’，76是‘L’，所以不难猜测，这一串字符连起来就是flag了</p>
+<p>81,76,78,85,123,119,51,49,99,48,109,101,95,116,48,95,114,51,125</p>
+<p>flag：QLNU{w31c0me_t0_r3}</p>
+<p>给一个比较不错的转化网站实现ascll码、16进制、10进制、二进制互相转化：</p>
+<p><a target="_blank" rel="noopener" href="https://www.rapidtables.org/zh-CN/convert/number/ascii-hex-bin-dec-converter.html">https://www.rapidtables.org/zh-CN/convert/number/ascii-hex-bin-dec-converter.html</a></p>
+<p><img src="/./../image/1700934421610-4.png" alt="img"></p>
+<p>非预期解：</p>
+<p>在进入软件后按空格进入汇编指令，然后就可以直接看到把ascll码转换过之后的flag</p>
+<p><img src="/./../image/1700934421611-5.png" alt="img"></p>
+<p>还有一样的操作，在cmd窗口运行一下：</p>
+<p><img src="/./../image/1700934421611-6.png" alt="img"></p>
+<h2 id="【f1-g】"><a href="#【f1-g】" class="headerlink" title="【f1@g】"></a>【<strong>f1@g】</strong></h2><p>首先，把下载的文件拖入die（查壳工具），无壳，32位</p>
+<p>然后拖入ida32，F5反编译</p>
+<p><img src="/./../image/1700934421611-7.png" alt="img"></p>
+<p>很显然，这不是flag，点进replaceOneWithI函数</p>
+<p><img src="/./../image/1700934421611-8.png" alt="img"></p>
+<p>很明显，这个函数就是修改了部分flag，对着数字按R转换</p>
+<p><img src="/./../image/1700934421611-9.png" alt="img"></p>
+<p>替换部分字母，得到正确的flag</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QLNU&#123;Am_1_th3_f1@g?&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="【好多get啊！你get到了吗？？】"><a href="#【好多get啊！你get到了吗？？】" class="headerlink" title="【好多get啊！你get到了吗？？】"></a>【<strong>好多get啊！你get到了吗？？】</strong></h2><p>首先，把下载的文件拖入die（查壳工具），无壳，32位</p>
+<p>然后拖入ida32，F5反编译</p>
+<p><img src="/./../image/1700934421611-10.png" alt="img"></p>
+<p>看见好多get函数，点进去</p>
+<p><img src="/./../image/1700934421611-11.png" alt="img"></p>
+<p>对着数字，按R转换</p>
+<p><img src="/./../image/1700934421612-12.png" alt="img"></p>
+<p>依次转换get函数，得到flag</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QLNU&#123;ni_zhua_dao_wo_le!&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="【我也很疑惑呀？？？？！】"><a href="#【我也很疑惑呀？？？？！】" class="headerlink" title="【我也很疑惑呀？？？？！】"></a>【我也很疑惑呀？？？？！】</h2><p>这题涉及到异或的计算，是一个位运算</p>
+<p><img src="/./../image/1700934421612-13.png" alt="img"></p>
+<p>就是每一位和6进行异或计算，脚本直接嗦了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&quot;WJHS&#125;^itY~iTY~6tY^6TY~itY^iTY~It&#123;&quot;</span></span><br><span class="line"></span><br><span class="line">result = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i in range(len(str1)):</span><br><span class="line">    result += chr(ord(str1[i]) ^ <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">print(result)</span><br><span class="line"><span class="comment">//QLNU&#123;Xor_xoR_x0r_X0R_xor_XoR_xOr&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="【baby-base64】"><a href="#【baby-base64】" class="headerlink" title="【baby_base64】"></a>【baby_base64<strong>】</strong></h2><p>首先，把下载的文件拖入die（查壳工具），无壳，64位</p>
+<p>然后拖入ida64，F5反编译</p>
+<p><img src="/./../image/1700934421612-14.png" alt="img"></p>
+<p>根据提示可以看出是base64加密且是换表加密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line">string = <span class="string">&quot;rrOxqoSIkKCVloqgjJeWoJKeoJ2WnpCgkKmQ3oL=&quot;</span></span><br><span class="line"></span><br><span class="line">tableBase64 = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span></span><br><span class="line">tableNew = <span class="string">&quot;+/9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;1.换表&#x27;</span></span><br><span class="line">maketrans = <span class="built_in">str</span>.maketrans(tableNew, tableBase64)</span><br><span class="line"><span class="string">&#x27;2.使用新表转换字符串&#x27;</span></span><br><span class="line">translate = string.translate(maketrans)</span><br><span class="line"><span class="built_in">print</span>(translate)</span><br><span class="line"><span class="string">&#x27;3.Base64解码&#x27;</span></span><br><span class="line">flag = base64.b64decode(translate)</span><br><span class="line"></span><br><span class="line">flag = base64.b64decode(string.translate(<span class="built_in">str</span>.maketrans(tableNew, tableBase64)))</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br><span class="line">QLNU&#123;wo_jiu_shi_ma_biao_oVo!&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="【走个迷宫试试-3岁小孩版】"><a href="#【走个迷宫试试-3岁小孩版】" class="headerlink" title="【走个迷宫试试_3岁小孩版】"></a>【<strong>走个迷宫试试_3岁小孩版】</strong></h2><p>首先，把下载的文件拖入die（查壳工具），无壳，64位</p>
+<p>然后拖入ida64，F5反编译</p>
+<p><img src="/./../image/1700934421612-17.png" alt="img"></p>
+<p>迷宫算法，跑程序</p>
+<p><img src="/./../image/1700934421612-18.png" alt="img"></p>
+<p><img src="/./../image/1700934421612-19.png" alt="img"></p>
+<p>迷宫路径：ssdsddwwwd</p>
+<p><img src="/./../image/1700934421612-20.png" alt="img"></p>
+<p>在线MD5加密网站</p>
+<p><img src="/./../image/1700934421613-21.png" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QLNU&#123;<span class="number">9E7837810192</span>102F&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="【走个迷宫试试-18岁青年版】"><a href="#【走个迷宫试试-18岁青年版】" class="headerlink" title="【走个迷宫试试_18岁青年版】"></a>【<strong>走个迷宫试试_18岁青年版】</strong></h2><p>首先，把下载的文件拖入die（查壳工具），无壳，64位</p>
+<p>然后拖入ida64，F5反编译</p>
+<p><img src="/./../image/1700934421613-22.png" alt="img"></p>
+<p><img src="/./../image/1700934421613-23.png" alt="img"></p>
+<p>俩循环，外循环循环10次，代表行，内循环循环16次，代表列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1111111111111111</span></span><br><span class="line"><span class="number">1001000100000011</span></span><br><span class="line"><span class="number">1101110101101011</span></span><br><span class="line"><span class="number">1100010001001011</span></span><br><span class="line"><span class="number">1111011101100011</span></span><br><span class="line"><span class="number">1100000100001111</span></span><br><span class="line"><span class="number">1111101101100111</span></span><br><span class="line"><span class="number">1100000000010011</span></span><br><span class="line"><span class="number">1100000000101001</span></span><br><span class="line"><span class="number">1111111111111111</span></span><br><span class="line"></span><br><span class="line">dssddssdssdddwwdddsdsdsd</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./../image/1700934421613-24.png" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QLNU&#123;zhnZzgrZC2rZC2rKzhD3zgrKC2rZzhnK&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="【ez-base64】"><a href="#【ez-base64】" class="headerlink" title="【ez_base64】"></a>【<strong>ez_base64】</strong></h2><p><img src="/./../image/1700934421613-25.png" alt="img"></p>
+<h2 id="【hard-base64】"><a href="#【hard-base64】" class="headerlink" title="【hard_base64】"></a>【<strong>hard_base64】</strong></h2><p>首先，把下载的文件拖入die（查壳工具），无壳，64位</p>
+<p>然后拖入ida64，F5反编译</p>
+<p><img src="/./../image/1700934421613-26.png" alt="img"></p>
+<p>解题脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generate_new_base</span>():</span><br><span class="line">    base = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span></span><br><span class="line">    index = [<span class="number">52</span>, <span class="number">62</span>, <span class="number">0</span>, <span class="number">26</span>, <span class="number">1</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">28</span>, <span class="number">3</span>, <span class="number">29</span>, <span class="number">4</span>, <span class="number">30</span>, <span class="number">5</span>, <span class="number">31</span>, <span class="number">6</span>, <span class="number">32</span>, <span class="number">7</span>, <span class="number">33</span>, <span class="number">8</span>, <span class="number">34</span>, <span class="number">9</span>, <span class="number">35</span>, <span class="number">10</span>, <span class="number">36</span>, <span class="number">11</span>, <span class="number">37</span>,</span><br><span class="line">             <span class="number">12</span>, <span class="number">38</span>, <span class="number">13</span>, <span class="number">39</span>, <span class="number">14</span>, <span class="number">40</span>, <span class="number">15</span>, <span class="number">41</span>, <span class="number">16</span>, <span class="number">42</span>, <span class="number">17</span>, <span class="number">43</span>, <span class="number">18</span>, <span class="number">44</span>, <span class="number">19</span>, <span class="number">45</span>, <span class="number">20</span>, <span class="number">46</span>, <span class="number">21</span>, <span class="number">47</span>, <span class="number">22</span>, <span class="number">48</span>, <span class="number">23</span>, <span class="number">49</span>,</span><br><span class="line">             <span class="number">24</span>, <span class="number">50</span>, <span class="number">25</span>, <span class="number">51</span>, <span class="number">53</span>, <span class="number">61</span>, <span class="number">54</span>, <span class="number">60</span>, <span class="number">55</span>, <span class="number">59</span>, <span class="number">56</span>, <span class="number">58</span>, <span class="number">57</span>, <span class="number">63</span>]</span><br><span class="line"></span><br><span class="line">    new_base = [base[index[i]] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">64</span>)]</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(new_base)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    new_base = generate_new_base()</span><br><span class="line">    <span class="built_in">print</span>(new_base)</span><br><span class="line"><span class="comment">#0+AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz192837465/</span></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">string = <span class="string">&quot;GJlBLSlCjbtZGibfMyrKLKpRhJzZGjlfmZ2yKabCMSbSjRnpOkfLjR62jjJ=&quot;</span></span><br><span class="line"></span><br><span class="line">tableBase64 = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span></span><br><span class="line">tableNew = <span class="string">&quot;0+AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz192837465/&quot;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">maketrans()：用于创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标；</span></span><br><span class="line"><span class="string">translate()：法根据参数table给出的表(包含 256 个字符)转换字符串的字符, 要过滤掉的字符放到 del 参数中；</span></span><br><span class="line"><span class="string">decode()：以encoding指定的编码格式解码字符串。</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;1.换表&#x27;</span></span><br><span class="line">maketrans = <span class="built_in">str</span>.maketrans(tableNew, tableBase64)</span><br><span class="line"><span class="string">&#x27;2.使用新表转换字符串&#x27;</span></span><br><span class="line">translate = string.translate(maketrans)</span><br><span class="line"><span class="built_in">print</span>(translate)</span><br><span class="line"><span class="string">&#x27;3.Base64解码&#x27;</span></span><br><span class="line">flag = base64.b64decode(translate)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">三合一操作：</span></span><br><span class="line"><span class="string">flag = base64.b64decode(string.translate(str.maketrans(tableNew, tableBase64)))</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">flag = base64.b64decode(string.translate(<span class="built_in">str</span>.maketrans(tableNew, tableBase64)))</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">input_str = <span class="string">&quot;9FDbfFTZt91Mk9VahdEMt9VMoN3X1FjafVGaysXVOxUU&quot;</span></span><br><span class="line">reversed_str = input_str[::-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(reversed_str0)</span><br><span class="line"><span class="comment">#UUxOVXsyaGVfajF1X3NoMV9tMEdhaV9kM19tZTFfbDF9</span></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Base64 编码的数据</span></span><br><span class="line">encoded_data = <span class="string">&quot;UUxOVXsyaGVfajF1X3NoMV9tMEdhaV9kM19tZTFfbDF9&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码数据</span></span><br><span class="line">decoded_data = base64.b64decode(encoded_data).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Decoded:&quot;</span>, decoded_data)</span><br><span class="line"><span class="comment">#QLNU&#123;2he_j1u_sh1_m0Gai_d3_me1_l1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者使用cyberchef</p>
+<p><img src="/./../image/1700934421613-27.png" alt="img"></p>
+<h2 id="【有时候运气也是实力的一部分！】"><a href="#【有时候运气也是实力的一部分！】" class="headerlink" title="【有时候运气也是实力的一部分！】"></a>【<strong>有时候运气也是实力的一部分！】</strong></h2><p>首先，把下载的文件拖入die（查壳工具），有壳，UPX壳，64位</p>
+<p><img src="/./../image/1700934421613-28.png" alt="img"></p>
+<p>先进行脱壳，使用upx工具</p>
+<p><img src="/./../image/1700934421613-29.png" alt="img"></p>
+<p>然后拖入ida64，F5反编译</p>
+<p>其他都是题目加密函数，重点看画红框的函数</p>
+<p><img src="/./../image/1700934421613-30.png" alt="img"></p>
+<p>函数sub10087</p>
+<p><img src="/./../image/1700934421614-31.png" alt="img"></p>
+<p>函数sub10086</p>
+<p><img src="/./../image/1700934421614-32.png" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sub10087</span>():</span><br><span class="line">    Str = <span class="string">&quot;,W=%%6W]:B0+73#GO&#125;&quot;</span></span><br><span class="line">    Str = <span class="built_in">list</span>(Str)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(Str)):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">ord</span>(Str[i]) &gt; <span class="number">59</span> <span class="keyword">and</span> <span class="built_in">ord</span>(Str[i]) &lt;= <span class="number">100</span>:</span><br><span class="line">            Str[i] = <span class="built_in">chr</span>(<span class="built_in">ord</span>(Str[i]) - <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">    Destination = <span class="string">&quot;&quot;</span>.join(Str)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(Destination) - <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        Destination = Destination[:j] + <span class="built_in">chr</span>(<span class="built_in">ord</span>(Destination[j]) ^ <span class="built_in">ord</span>(Destination[j + <span class="number">1</span>])) + Destination[j + <span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Destination</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">result = sub10087()</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line"><span class="comment">#_shiLi_De_YiBuFen&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>看代码看到这里</p>
+<p><img src="/./../image/1700934421614-33.png" alt="img"></p>
+<p>v5就是a1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">v13 = <span class="number">678</span></span><br><span class="line"><span class="keyword">if</span> v13 == <span class="number">678</span>:</span><br><span class="line">    v5 = [<span class="number">0</span>] * <span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        v5[i] = v13 % <span class="number">10</span></span><br><span class="line">        v13 //= <span class="number">10</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    v5 = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(v5)  <span class="comment"># 输出v5的内容</span></span><br><span class="line"><span class="comment">#[8, 7, 6]</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt_v0</span>(<span class="params">v0, a1</span>):</span><br><span class="line">    v3 = [<span class="number">0</span>] * <span class="built_in">len</span>(v0)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(v0)):</span><br><span class="line">        key = a1[i % <span class="number">3</span>]</span><br><span class="line">        v3[i] = <span class="built_in">chr</span>(<span class="built_in">ord</span>(v0[i]) ^ key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(v3)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">v0 = <span class="string">&quot;YKH]|_&#125;iWaX_mTna&quot;</span></span><br><span class="line">a1 = [<span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">encrypted_v0 = encrypt_v0(v0, a1)</span><br><span class="line"><span class="built_in">print</span>(encrypted_v0)</span><br><span class="line"><span class="comment">#QLNU&#123;YunQi_YeShi</span></span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QLNU&#123;YunQi_YeShi_shiLi_De_YiBuFen&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jiangwenwen066.github.io">WenWenJiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jiangwenwen066.github.io/2023/10/02/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98wp/">https://jiangwenwen066.github.io/2023/10/02/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98wp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jiangwenwen066.github.io" target="_blank">WenWenJiang's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/STUDY/">STUDY</a></div><div class="post_share"><div class="social-share" data-image="/img/2023wp.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用"><img class="cover" src="/img/android1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">安卓逆向学习篇---Android studio环境搭建以及使用</div></div></a></div><div class="next-post pull-right"><a href="/2023/10/01/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98%E5%87%BA%E9%A2%98%E6%BA%90%E7%A0%81/" title="给QLNU2023级新生re入门题出题源码"><img class="cover" src="/img/2023.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">给QLNU2023级新生re入门题出题源码</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用"><img class="cover" src="/img/android1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-25</div><div class="title">安卓逆向学习篇---Android studio环境搭建以及使用</div></div></a></div><div><a href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)"><img class="cover" src="/img/android4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-12</div><div class="title">安卓逆向学习篇---算法复现以及协议复现(js、python)</div></div></a></div><div><a href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用"><img class="cover" src="/img/android3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-28</div><div class="title">安卓逆向学习篇---frida_server应用</div></div></a></div><div><a href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置"><img class="cover" src="/img/android2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-26</div><div class="title">安卓逆向学习篇---抓包证书配置</div></div></a></div><div><a href="/2023/02/06/%E5%88%9D%E6%AC%A1%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/" title="初次接触动态调试--lazyida初次使用"><img class="cover" src="/img/dbg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-06</div><div class="title">初次接触动态调试--lazyida初次使用</div></div></a></div><div><a href="/2023/05/26/%E5%88%9D%E6%AC%A1%E6%8E%A5%E8%A7%A6%E8%84%B1%E5%A3%B3/" title="初次接触脱壳"><img class="cover" src="/img/ke.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">初次接触脱壳</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WenWenJiang</div><div class="author-info__description">唉，ctf</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jiangwenwen066/jiangwenwen066.github.io"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">QQ：1625847503</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RE"><span class="toc-number">1.</span> <span class="toc-text">RE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E4%BD%A0%E7%9C%8B%E6%88%91%E5%8F%8D%E4%B8%8D%E5%8F%8D%E5%B0%B1%E5%AE%8C%E4%BA%86%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">【你看我反不反就完了】字符串对比：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E9%98%BF%E6%96%AF%E5%85%8B%E3%80%91ascll%E7%A0%81%E8%A1%A8%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">【阿斯克】ascll码表对比：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90f1-g%E3%80%91"><span class="toc-number">1.3.</span> <span class="toc-text">【f1@g】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E5%A5%BD%E5%A4%9Aget%E5%95%8A%EF%BC%81%E4%BD%A0get%E5%88%B0%E4%BA%86%E5%90%97%EF%BC%9F%EF%BC%9F%E3%80%91"><span class="toc-number">1.4.</span> <span class="toc-text">【好多get啊！你get到了吗？？】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E6%88%91%E4%B9%9F%E5%BE%88%E7%96%91%E6%83%91%E5%91%80%EF%BC%9F%EF%BC%9F%EF%BC%9F%EF%BC%9F%EF%BC%81%E3%80%91"><span class="toc-number">1.5.</span> <span class="toc-text">【我也很疑惑呀？？？？！】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90baby-base64%E3%80%91"><span class="toc-number">1.6.</span> <span class="toc-text">【baby_base64】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E8%B5%B0%E4%B8%AA%E8%BF%B7%E5%AE%AB%E8%AF%95%E8%AF%95-3%E5%B2%81%E5%B0%8F%E5%AD%A9%E7%89%88%E3%80%91"><span class="toc-number">1.7.</span> <span class="toc-text">【走个迷宫试试_3岁小孩版】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E8%B5%B0%E4%B8%AA%E8%BF%B7%E5%AE%AB%E8%AF%95%E8%AF%95-18%E5%B2%81%E9%9D%92%E5%B9%B4%E7%89%88%E3%80%91"><span class="toc-number">1.8.</span> <span class="toc-text">【走个迷宫试试_18岁青年版】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90ez-base64%E3%80%91"><span class="toc-number">1.9.</span> <span class="toc-text">【ez_base64】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90hard-base64%E3%80%91"><span class="toc-number">1.10.</span> <span class="toc-text">【hard_base64】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E6%9C%89%E6%97%B6%E5%80%99%E8%BF%90%E6%B0%94%E4%B9%9F%E6%98%AF%E5%AE%9E%E5%8A%9B%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%81%E3%80%91"><span class="toc-number">1.11.</span> <span class="toc-text">【有时候运气也是实力的一部分！】</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp"><img src="/img/20231.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给QLNU2023级新生第一次校赛题wp"/></a><div class="content"><a class="title" href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp">给QLNU2023级新生第一次校赛题wp</a><time datetime="2023-11-25T16:00:00.000Z" title="发表于 2023-11-26 00:00:00">2023-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)"><img src="/img/android4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---算法复现以及协议复现(js、python)"/></a><div class="content"><a class="title" href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)">安卓逆向学习篇---算法复现以及协议复现(js、python)</a><time datetime="2023-11-11T16:00:00.000Z" title="发表于 2023-11-12 00:00:00">2023-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用"><img src="/img/android3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---frida_server应用"/></a><div class="content"><a class="title" href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用">安卓逆向学习篇---frida_server应用</a><time datetime="2023-10-27T16:00:00.000Z" title="发表于 2023-10-28 00:00:00">2023-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置"><img src="/img/android2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---抓包证书配置"/></a><div class="content"><a class="title" href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置">安卓逆向学习篇---抓包证书配置</a><time datetime="2023-10-25T16:00:00.000Z" title="发表于 2023-10-26 00:00:00">2023-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用"><img src="/img/android1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---Android studio环境搭建以及使用"/></a><div class="content"><a class="title" href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用">安卓逆向学习篇---Android studio环境搭建以及使用</a><time datetime="2023-10-24T16:00:00.000Z" title="发表于 2023-10-25 00:00:00">2023-10-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/2023wp.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By WenWenJiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

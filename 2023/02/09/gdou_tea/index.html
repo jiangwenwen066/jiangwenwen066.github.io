@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>GDOUCTF xxtea、doublegame完整复现 | WenWenJiang's Blog</title><meta name="author" content="WenWenJiang"><meta name="copyright" content="WenWenJiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="xxtea考点：xxtea加密魔改，代码审计 做题步骤：查壳，无壳，64位  拖到64位ida中进行反编译，但是本题没要main函数，所以要用shift+f12查看字符串的方式，通过字符串来找到主要的加密函数  查看了“please input your flag,查看到了一段不像是密文的数据  对于这种难找主函数的题，其实有很多方法可以去找： 首先跑一遍这个程序，看看有哪些关键语句（字符串）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GDOUCTF xxtea、doublegame完整复现">
+<meta property="og:url" content="https://jiangwenwen066.github.io/2023/02/09/gdou_tea/index.html">
+<meta property="og:site_name" content="WenWenJiang&#39;s Blog">
+<meta property="og:description" content="xxtea考点：xxtea加密魔改，代码审计 做题步骤：查壳，无壳，64位  拖到64位ida中进行反编译，但是本题没要main函数，所以要用shift+f12查看字符串的方式，通过字符串来找到主要的加密函数  查看了“please input your flag,查看到了一段不像是密文的数据  对于这种难找主函数的题，其实有很多方法可以去找： 首先跑一遍这个程序，看看有哪些关键语句（字符串）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jiangwenwen066.github.io/img/tea.png">
+<meta property="article:published_time" content="2023-02-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-25T17:15:56.702Z">
+<meta property="article:author" content="WenWenJiang">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jiangwenwen066.github.io/img/tea.png"><link rel="shortcut icon" href="/img/touxiang.jpg"><link rel="canonical" href="https://jiangwenwen066.github.io/2023/02/09/gdou_tea/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'GDOUCTF xxtea、doublegame完整复现',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-26 01:15:56'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/tea.png')"><nav id="nav"><span id="blog-info"><a href="/" title="WenWenJiang's Blog"><span class="site-name">WenWenJiang's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GDOUCTF xxtea、doublegame完整复现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-08T16:00:00.000Z" title="发表于 2023-02-09 00:00:00">2023-02-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-25T17:15:56.702Z" title="更新于 2023-11-26 01:15:56">2023-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/">CTF</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/wp/">wp</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="GDOUCTF xxtea、doublegame完整复现"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="xxtea"><a href="#xxtea" class="headerlink" title="xxtea"></a>xxtea</h2><h3 id="考点："><a href="#考点：" class="headerlink" title="考点："></a>考点：</h3><p>xxtea加密魔改，代码审计</p>
+<h3 id="做题步骤："><a href="#做题步骤：" class="headerlink" title="做题步骤："></a>做题步骤：</h3><p>查壳，无壳，64位</p>
+<p><img src="/./../image/image-20231017141031687.png" alt="image-20231017141031687"></p>
+<p>拖到64位ida中进行反编译，但是本题没要main函数，所以要用shift+f12查看字符串的方式，通过字符串来找到主要的加密函数</p>
+<p><img src="/./../image/image-20231017141047680.png" alt="image-20231017141047680"></p>
+<p>查看了“please input your flag,查看到了一段不像是密文的数据</p>
+<p><img src="/./../image/image-20231017141105115.png" alt="image-20231017141105115"></p>
+<p>对于这种难找主函数的题，其实有很多方法可以去找：</p>
+<p>首先跑一遍这个程序，看看有哪些关键语句（字符串）</p>
+<p><img src="/./../image/image-20231017141120903.png" alt="image-20231017141120903"></p>
+<p>可以看到除了上面找错的那些字符，还有一个fault！You can go online and learn the tea algorithm!</p>
+<p>shift+f12查看字符串</p>
+<p>找到相对应的函数：</p>
+<p><img src="/./../image/image-20231017141137349.png" alt="image-20231017141137349"></p>
+<h4 id="调用函数1"><a href="#调用函数1" class="headerlink" title="调用函数1"></a>调用函数1</h4><p>在ida中有一个操作是查看上下级函数，在这里可以看到，有一个上级函数，就是执行完上级函数，就可以执行本函数，鼠标点击灰色的部分，单机一下然后摁x，点击ok就可以去查看上级函数</p>
+<p>比如有一个main函数，引用了m1,m2,m3三个函数，然后m1引用了n1,n2两个函数，我们从n1或者n2返回上级就回到了m1，在m1，m2，m3回到上级就回到了main函数</p>
+<p>比如可以看一下这个函数：<img src="/./../image/image-20231017141156011.png" alt="image-20231017141156011"></p>
+<p>一直往里面走，就会看到刚开始执行程序的时候的那个fakeflag：</p>
+<p><img src="/./../image/image-20231017141210971.png" alt="image-20231017141210971"></p>
+<p>所以即使没有main函数，但是这个函数yes有着类似于main函数的功能，这里会调用各个函数</p>
+<p>然后分析一下这个段代码：</p>
+<p>首先就是输出那些内容，一些没要用的提示，而且我输入了10个数才提示错误，所以差不多可以判断出来，被加密的数据有10位</p>
+<p><img src="/./../image/image-20231017141225158.png" alt="image-20231017141225158"></p>
+<p>所以下一段是一个for循环，0~9进行遍历循环：</p>
+<p><img src="/./../image/image-20231017141235308.png" alt="image-20231017141235308"></p>
+<h4 id="调用函数2"><a href="#调用函数2" class="headerlink" title="调用函数2"></a>调用函数2</h4><p>然后是下一个被调用的函数：</p>
+<p><img src="/./../image/image-20231017141251650.png" alt="image-20231017141251650"></p>
+<p>因为ida在反汇编的时候，会把一些比较复杂的数组变成指针，比如这里，的*a1&#x3D;2233，其实这里就是因为把a1这个数组的a1[0]读成了指针，不用太在意，就知道是a1[0]&#x3D;2233就可以了</p>
+<p>现在得到了a1数字，这里就得到了tea加密的key</p>
+<p>在此之前，对key有过一次定义，但是那个不是真的key，这里很容易认为这个就是tea加密的key</p>
+<p><img src="/./../image/image-20231017141306922.png" alt="image-20231017141306922"></p>
+<h4 id="调用函数3"><a href="#调用函数3" class="headerlink" title="调用函数3"></a>调用函数3</h4><p>然后继续分析下一个调用的函数，这个函数他操作他把v9赋了v8的数值，但是又好像不影响做题，后面都是对v8进行计计算加密的，据大佬说，这里是出题人用来校验flag的!</p>
+<p><img src="/./../image/image-20231017141329555.png" alt="image-20231017141329555"></p>
+<h4 id="调用函数4（tea加密函数）"><a href="#调用函数4（tea加密函数）" class="headerlink" title="调用函数4（tea加密函数）"></a>调用函数4（tea加密函数）</h4><p>然后开始下一函数，也就是加密函数，这个函数看到那么多的位运算，很明显是tea加密的特征，具体分析一下这个加密函数ida在反汇编的时候，无法正确识别出int 和char类型的数据，所以可以自行更改一下数据类型，可以看的更清楚一些</p>
+<p>具体操作是选择int的数据类型然后按y键，然后输出char*，就变成了字符型的类型，这样看起来会清楚很多</p>
+<p><img src="/./../image/image-20231017141341127.png" alt="image-20231017141341127"></p>
+<p>再看一下这个函数的传参，传入的v7整个数组，对v7进行加密的，然后通过一些操作把函数变成可以很清楚看明白的方式，我自己尽力注释一下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">8</span>; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    v5 = <span class="number">0</span>;<span class="comment">//v5是一个计数器，用来判断什么时候退出循环的</span></span><br><span class="line">    delta = <span class="number">0xF462900</span> * i;</span><br><span class="line">    v3 = i + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//v3的作用就是一个索引，位下面的flag[]数组的加密做索引的，下面可以换成flag[i+1]和flag[i]</span></span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">      ++v5;</span><br><span class="line">      *&amp;flag[<span class="number">4</span> * i] += delta ^ (*&amp;flag[<span class="number">4</span> * v3] + ((*&amp;flag[<span class="number">4</span> * v3] &gt;&gt; <span class="number">5</span>) ^ (<span class="number">16</span> * *&amp;flag[<span class="number">4</span> * v3]))) ^ (delta + *&amp;key[<span class="number">4</span> * (delta &amp; <span class="number">3</span>)]);</span><br><span class="line">      *&amp;flag[<span class="number">4</span> * v3] += (delta + *&amp;key[<span class="number">4</span> * ((delta &gt;&gt; <span class="number">11</span>) &amp; <span class="number">3</span>)]) ^ (*&amp;flag[<span class="number">4</span> * i]+ ((*&amp;flag[<span class="number">4</span> * i] &gt;&gt; <span class="number">5</span>) ^ (<span class="number">16</span> * *&amp;flag[<span class="number">4</span> * i])));</span><br><span class="line">      <span class="comment">//这里可以看出黑箱子，只需要知道这里是tea加密就可以了，解密的时候就-=就可以了</span></span><br><span class="line">      delta += <span class="number">0xF462900</span>;</span><br><span class="line">      <span class="comment">//这里的delta是每次都是累加的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> ( v5 &lt;= <span class="number">32</span> );<span class="comment">//循环32次，然后跳出循环</span></span><br><span class="line">    result = (i + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有几个魔改的地方</p>
+<p>1：delta的数值改变了</p>
+<p>2：这里多了一个for的八次循环，就导致了delta的数值加了很多，这里要大致推算最后一次循环经过加密后的数值：delta&#x3D;0xF462900*（j+32）</p>
+<p>j代表的是外八次循环的第几次循环，32代表的是每一次内循环的次数是32次，逆向的时候就是从delta&#x3D;0xF462900<em>（8+32）开始，然后是0xF462900</em>（7+32）进行解密直到最后0xF462900*（0+32）</p>
+<p>这样就是实现了最终的解密</p>
+<p>解密关键数据：</p>
+<p>明文：</p>
+<p><img src="/./../image/image-20231017141904763.png" alt="image-20231017141904763"></p>
+<p>key:</p>
+<p><img src="/./../image/image-20231017141922590.png" alt="image-20231017141922590"></p>
+<p>delta:0xF462900，但是因为有外部大循环的原因，所以在脚本中的数据为：delta&#x3D;0xF462900*（j+32）</p>
+<p>然后代入一般的解题脚本，再加上一个大的循环，解题脚本如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> r = <span class="number">32</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> <span class="type">const</span> key[<span class="number">4</span>] = &#123; <span class="number">2233</span>,<span class="number">4455</span>,<span class="number">6677</span>,<span class="number">8899</span> &#125;;</span><br><span class="line">    <span class="type">uint32_t</span> v[<span class="number">10</span>] = &#123;<span class="number">0x1a800bda</span>,<span class="number">0xf7a6219b</span>,<span class="number">0x491811d8</span>,<span class="number">0xf2013328</span>,<span class="number">0x156c365b</span>,<span class="number">0x3c6eaad8</span>,<span class="number">0x84d4bf28</span>,<span class="number">0xf11a7ee7</span>,<span class="number">0x3313b252</span>,<span class="number">0xdd9fe279</span>&#125;;</span><br><span class="line">   <span class="comment">//初始化定义key和flag</span></span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>, n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">8</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">    <span class="comment">//外部的大循环逆向</span></span><br><span class="line">     &#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> delta = <span class="number">0xF462900</span>, sum = delta * (<span class="number">32</span>+j);</span><br><span class="line">        <span class="comment">// unsigned int必须要有的，这里的数据都是无符号int型，如果不加会对下面的计算有影响</span></span><br><span class="line">        n = j + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            i++;</span><br><span class="line">            v[n] -= (((key[(sum &gt;&gt; <span class="number">11</span>) &amp; <span class="number">3</span>]) + sum) ^ (((v[j] &lt;&lt; <span class="number">4</span>) ^ (v[j] &gt;&gt; <span class="number">5</span>)) + v[j]));</span><br><span class="line">            v[j] -= (((key[sum &amp; <span class="number">3</span>] + sum) ^ ((v[n] &lt;&lt; <span class="number">4</span>) ^ (v[n] &gt;&gt; <span class="number">5</span>)) + v[n]) ^ sum);</span><br><span class="line">            sum -= delta;</span><br><span class="line">            <span class="comment">//内部tea的解密循环</span></span><br><span class="line">        &#125; <span class="keyword">while</span> (i &lt;= <span class="number">32</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">3</span>; j&gt;=<span class="number">0</span>; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, (v[i] &gt;&gt; (j * <span class="number">8</span>)) &amp; <span class="number">0xFF</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//经过解密之后的数据是一个16进制的形式，这里经过一些计算给16进制转化为字符的形式进行输出</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//HZCTF&#123;hzCtf_94_re666fingcry5641qq&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>1、在找主函数的时候，可以先运行一下程序，然后根据程序中的关键字符串来定位函数</p>
+<p>2、在ida中H键可以实现10进制和16进制的转化</p>
+<p>3、y键可以实现在ida把误认为是int形的数据改回原来的类型，来更方便看函数</p>
+<p>4、在ida反汇编的时候会把一些比较复杂的数组变成指针</p>
+<p>5、tea加密的特征是一个delta和flag[i]与flag[i+1]进行的位计算</p>
+<h2 id="doublegame"><a href="#doublegame" class="headerlink" title="doublegame"></a>doublegame</h2><h2 id="doublegame-1"><a href="#doublegame-1" class="headerlink" title="doublegame"></a>doublegame</h2><h3 id="考点：-1"><a href="#考点：-1" class="headerlink" title="考点："></a>考点：</h3><p>迷宫类型题，还有跳过程序的ce工具的使用</p>
+<p>dll文件</p>
+<h3 id="做题步骤：-1"><a href="#做题步骤：-1" class="headerlink" title="做题步骤："></a>做题步骤：</h3><p>刚开始打开文件遇到无法打开的问题，是因为我用的dev c这个软件没要集成的一些函数库，所以在本题程序打开的时候，遇到了未知函数，所以就报错打不开</p>
+<p>解决方案：自行上网上下载缺少的dll的库文件，或者可以之下下一个Visual Studio 2022，那里面就包含很多的库</p>
+<p>首先打开给的程序，是一个exe可执行文件，执行以下文件</p>
+<p><img src="/./../image/1700932555057-169.png" alt="img"></p>
+<p>这是一个贪吃蛇的游戏，只有达到一定的分数，才可以过关，所以是很难的</p>
+<p>去查看一下伪代码</p>
+<p><img src="/./../image/1700932555057-170.png" alt="img"></p>
+<p>查看一下字符串</p>
+<p><img src="/./../image/1700932555057-171.png" alt="img"></p>
+<p>可以看到这个东西，这个应该是一个上面提示之类的，他说第一个游戏可以告诉你score，返回这个score是拯救猫猫的钥匙，当正常结束之后，就会提示、正确，而且flag是有HZCTF{md5(path)+score}</p>
+<p>score就是通过第一个游戏之后给的，path应该是第二个游戏给的，大概率是一个迷宫的路径</p>
+<p>然后继续查看一下第一个游戏的程序，当游戏失败的时候，他会提示GAME OVER，然后问我是否继续，所以在查看字符串面板查找到之后然后跟进一下函数：</p>
+<p><img src="/./../image/1700932555057-172.png" alt="img"></p>
+<p><img src="/./../image/1700932555057-173.png" alt="img"></p>
+<p>看到了一个比较关键的数值，13371337，应该是当我们的分数大于这个数值的时候，就会通过第一关，所以可以使用ce修改一下我的当前分数，然后就可以实现过关的目的了，去调试一下。</p>
+<p>而且这个13371337应该就是之前说的score的数值了</p>
+<p>打开ce，加入doublegame的进程</p>
+<p><img src="/./../image/1700932555057-174.png" alt="img"></p>
+<p><img src="/./../image/1700932555057-175.png" alt="img"></p>
+<p>然后要找到分数所存储的地方，所以首次搜索0，然后去吃一个蛋蛋，改变一下目前的分数，去实现再次扫描寻数值，寻找10，就定位到了存储游戏分数的地方</p>
+<p><img src="/./../image/1700932555058-176.png" alt="img"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jiangwenwen066.github.io">WenWenJiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jiangwenwen066.github.io/2023/02/09/gdou_tea/">https://jiangwenwen066.github.io/2023/02/09/gdou_tea/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jiangwenwen066.github.io" target="_blank">WenWenJiang's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a></div><div class="post_share"><div class="social-share" data-image="/img/tea.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/16/z3%E2%80%94sover%E7%9A%84%E4%BD%BF%E7%94%A8/" title="z3—sover的使用"><img class="cover" src="/img/z3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">z3—sover的使用</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/06/%E5%88%9D%E6%AC%A1%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/" title="初次接触动态调试--lazyida初次使用"><img class="cover" src="/img/dbg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">初次接触动态调试--lazyida初次使用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WenWenJiang</div><div class="author-info__description">唉，ctf</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jiangwenwen066/jiangwenwen066.github.io"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">QQ：1625847503</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xxtea"><span class="toc-number">1.</span> <span class="toc-text">xxtea</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E7%82%B9%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">考点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9A%E9%A2%98%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">做题步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B01"><span class="toc-number">1.2.1.</span> <span class="toc-text">调用函数1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B02"><span class="toc-number">1.2.2.</span> <span class="toc-text">调用函数2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B03"><span class="toc-number">1.2.3.</span> <span class="toc-text">调用函数3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B04%EF%BC%88tea%E5%8A%A0%E5%AF%86%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">调用函数4（tea加密函数）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#doublegame"><span class="toc-number">2.</span> <span class="toc-text">doublegame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#doublegame-1"><span class="toc-number">3.</span> <span class="toc-text">doublegame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E7%82%B9%EF%BC%9A-1"><span class="toc-number">3.1.</span> <span class="toc-text">考点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9A%E9%A2%98%E6%AD%A5%E9%AA%A4%EF%BC%9A-1"><span class="toc-number">3.2.</span> <span class="toc-text">做题步骤：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp"><img src="/img/20231.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给QLNU2023级新生第一次校赛题wp"/></a><div class="content"><a class="title" href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp">给QLNU2023级新生第一次校赛题wp</a><time datetime="2023-11-25T16:00:00.000Z" title="发表于 2023-11-26 00:00:00">2023-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)"><img src="/img/android4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---算法复现以及协议复现(js、python)"/></a><div class="content"><a class="title" href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)">安卓逆向学习篇---算法复现以及协议复现(js、python)</a><time datetime="2023-11-11T16:00:00.000Z" title="发表于 2023-11-12 00:00:00">2023-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用"><img src="/img/android3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---frida_server应用"/></a><div class="content"><a class="title" href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用">安卓逆向学习篇---frida_server应用</a><time datetime="2023-10-27T16:00:00.000Z" title="发表于 2023-10-28 00:00:00">2023-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置"><img src="/img/android2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---抓包证书配置"/></a><div class="content"><a class="title" href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置">安卓逆向学习篇---抓包证书配置</a><time datetime="2023-10-25T16:00:00.000Z" title="发表于 2023-10-26 00:00:00">2023-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用"><img src="/img/android1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---Android studio环境搭建以及使用"/></a><div class="content"><a class="title" href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用">安卓逆向学习篇---Android studio环境搭建以及使用</a><time datetime="2023-10-24T16:00:00.000Z" title="发表于 2023-10-25 00:00:00">2023-10-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/tea.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By WenWenJiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

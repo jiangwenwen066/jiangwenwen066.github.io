@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>WenWenJiang's Blog - Re_Study</title><meta name="author" content="WenWenJiang"><meta name="copyright" content="WenWenJiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="唉，ctf">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WenWenJiang&#39;s Blog">
+<meta property="og:url" content="https://jiangwenwen066.github.io/index.html">
+<meta property="og:site_name" content="WenWenJiang&#39;s Blog">
+<meta property="og:description" content="唉，ctf">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jiangwenwen066.github.io/img/touxiang.jpg">
+<meta property="article:author" content="WenWenJiang">
+<meta property="article:tag" content="WenWenJiang, Re ,安卓逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jiangwenwen066.github.io/img/touxiang.jpg"><link rel="shortcut icon" href="/img/touxiang.jpg"><link rel="canonical" href="https://jiangwenwen066.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WenWenJiang\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-11-28 15:17:52'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/big.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="WenWenJiang's Blog"><span class="site-name">WenWenJiang's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">WenWenJiang's Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp"><img class="post-bg" src="/img/20231.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给QLNU2023级新生第一次校赛题wp"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp">给QLNU2023级新生第一次校赛题wp</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-25T16:00:00.000Z" title="发表于 2023-11-26 00:00:00">2023-11-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/re/">re</a></span></div><div class="content">很抱歉本次比赛给大家带来了不好的体验，本次比赛的本意是让大家学到更多的知识，所以大家就当做是学习资源，去复现这些题吧（不懂的地方可以私聊我）签到抱歉抱歉，给各位磕了，第一版附件难了，看第二版就行了！（其实就是加了一点点知识）
+旧附件
+无壳，32位
+
+定位到关键的代码函数
+12for ( i = 0; i &lt; strlen(Str); ++i )    Str[i] ^= (unsigned __int8)i ^ 2
+
+这个str[i]^&#x3D;i^2可以看成str[i]&#x3D;str[i]^i^2
+C语言基础的语法了属于是
+然后密文在哪？？额这波纯属是我套娃了，密文在一个定义的函数里面，函数嵌套了16层（闲得无聊弄得）
+可以选择点击16次找到定义密文的函数，也可以shift+f12拿到密文
+
+
+至于这个加密怎么逆呢，就……再异或一遍就行了
+这就是异或的特征了，写脚本的时候这么写就行了，这里附上简单的python脚本：
+12345678910flag = &quot;SONT&#125;Paii;eVZ?S\\#&#125;eRBqKDVUMFGfXn_&quot;flag ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)"><img class="post-bg" src="/img/android4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---算法复现以及协议复现(js、python)"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)">安卓逆向学习篇---算法复现以及协议复现(js、python)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-11T16:00:00.000Z" title="发表于 2023-11-12 00:00:00">2023-11-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/Android/">Android</a></span></div><div class="content">算法复现：md5部分首先是调用，就直接是调用大神写的Crypto了(全当python的库文件了)
+首先复现一下md5的加密算法
+md5的加密之前数值是： equtype&#x3D;ANDROID&amp;loginImei&#x3D;Androidnull&amp;timeStamp&#x3D;1699870290703&amp;userPwd&#x3D;woshimima&amp;username&#x3D;11112222333&amp;key&#x3D;sdlkjsdljf0j2fsjkmd5加密之后的数值是： f47d70a0d19de14449c66eada93469af
+先看一下jadx的源码
+12345678910111213141516public void addRequestMap(Map&lt;String, String&gt; addMap, int a) &#123;      String time = System.currentTimeMillis() + &quot;&quot;;      if (addMap == null) &#123;    ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用"><img class="post-bg" src="/img/android3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---frida_server应用"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用">安卓逆向学习篇---frida_server应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-27T16:00:00.000Z" title="发表于 2023-10-28 00:00:00">2023-10-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/Android/">Android</a></span></div><div class="content">frida的使用环境搭建配环境好麻烦好麻烦的！！！哎
+为了方便学习，以下所有的东西都打包到了阿里云盘：
+frida_server.txt https://www.aliyundrive.com/s/RwsGa937eh9去010修改文件头为PK（50 4B 03 04）然后修改后缀为zip解压
+注意版本！！一定要注意版本！
+本人环境：
+Python 3.8
+xiaomi9 root android 12
+Frida版本： 14.2.18
+tips：另外好像有python的要求，我个人是建议使用python3.8（最好是3.8.6之前的版本）
+虽然差别不大，但是本人亲身经历，3.8.6之后的python打包的exe程序就用uncompyle6反编译不出来了！
+下面都是按照python8展开的环境配置
+frida和frida-toolspip install frida
+pip install frida-tools
+python3.8配置直接安装python3.8.3傻瓜式安装就可以了，注意自动添加PATH环境变量就好
+webstorm安装用来写js代码，一个简单的js编辑器（其实没有也 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置"><img class="post-bg" src="/img/android2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---抓包证书配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置">安卓逆向学习篇---抓包证书配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T16:00:00.000Z" title="发表于 2023-10-26 00:00:00">2023-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/Android/">Android</a></span></div><div class="content">原理：讲用户的证书移动到系统正式才能被正确地识别
+系统证书路径 ：&#x2F;etc&#x2F;security&#x2F;cacerts
+用户证书路径： &#x2F;data&#x2F;misc&#x2F;user&#x2F;0&#x2F;cacerts-added
+由于这些目录只有只读权限，所以无法直接移动
+打开magisk输入Move Certificates模块即可
+ 
+刷完之后，就可以看到在用户没有包了，那就是被传到了系统里，就可以直接使用了
+抓到包是unknown，ε&#x3D;(´ο｀*)))唉出问题了，证书还是没配好，手机端应该没问题，大概率是电脑的问题了
+
+那就大胆一下，重新装一下证书
+重装证书在charles里：help -&gt; SSL proxying -&gt; save charles  root certificate 然后把证书保存到桌面上，起一个自己的名字
+用adb shell 进入 &#x2F;sdcard目录下 ls一下查看文件，没有找到
+
+所以就不删除了，如果有pem文件，就要rm -rf 给pom文件删除掉
+然后在win端把自己生成的pom文 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用"><img class="post-bg" src="/img/android1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---Android studio环境搭建以及使用"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用">安卓逆向学习篇---Android studio环境搭建以及使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-24T16:00:00.000Z" title="发表于 2023-10-25 00:00:00">2023-10-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/Android/">Android</a></span></div><div class="content">Android studio环境搭建以及抓包首先下载Android studio ，阿里云盘分享安装包（4.2.0版本）：
+https://www.aliyundrive.com/s/hNfYRTXcyyi
+汉化其实汉化意义不大，但是为了方便学习，看起来更舒服，就简单汉化一下
+贴一个csdn的博客，可以跟着大佬汉化一下：
+Android studio中文汉化详细教程配置前面的一些配置我就简单略过了，(写的时候已经配完了，就正常的配置)
+SDK的安卓版本可以选择一下安卓10
+
+package details选择30.0.3版本
+
+SDK tools可以如下选择：
+
+Android studio的一些基本知识：新建项目文件-新建，创建一个项目，然后有很多图形化的界面可以选择，我选择了c++的版本然后又这样的一个界面：、
+
+从上往下依次是项目名称-包名-存储位置-语言-SDK路径最低要求
+然后在gradle查看一下插件版本是否匹配，不匹配的话编译会报错
+
+编译apk按照如下指令进行编译：
+
+燃点击之后就在如下文件夹出现apk-debug，之后用模拟器打开，就成了                ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/10/02/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98wp/" title="给QLNU2023级新生re入门题wp"><img class="post-bg" src="/img/2023wp.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给QLNU2023级新生re入门题wp"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/02/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98wp/" title="给QLNU2023级新生re入门题wp">给QLNU2023级新生re入门题wp</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-01T16:00:00.000Z" title="发表于 2023-10-02 00:00:00">2023-10-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/re/">re</a></span></div><div class="content">RE【你看我反不反就完了】字符串对比：拖到die中，发现是无壳，64位，拖动到64位的ida中进行反编译
+
+成功打开后，就找到了最开始界面，就已经看到了flag
+
+可以按一下f5进入伪代码的窗口：
+这样就得到了flag：QLNU{he11ow_re!}
+可以win+r 然后输入cmd进行命令界面，然后把程序拖动进去，输入得到的flag，显示输入正确
+
+【阿斯克】ascll码表对比：还是一样的查壳，是64位无壳，直接进行反编译
+
+这里看到了有一个v5的数组，这个就是所谓的ascll码
+ascll码81对应的字符的‘Q’，76是‘L’，所以不难猜测，这一串字符连起来就是flag了
+81,76,78,85,123,119,51,49,99,48,109,101,95,116,48,95,114,51,125
+flag：QLNU{w31c0me_t0_r3}
+给一个比较不错的转化网站实现ascll码、16进制、10进制、二进制互相转化：
+https://www.rapidtables.org/zh-CN/convert/number/ascii-hex-bin-dec-converter.ht ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/10/01/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98%E5%87%BA%E9%A2%98%E6%BA%90%E7%A0%81/" title="给QLNU2023级新生re入门题出题源码"><img class="post-bg" src="/img/2023.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给QLNU2023级新生re入门题出题源码"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/01/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9Fre%E5%85%A5%E9%97%A8%E9%A2%98%E5%87%BA%E9%A2%98%E6%BA%90%E7%A0%81/" title="给QLNU2023级新生re入门题出题源码">给QLNU2023级新生re入门题出题源码</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-30T16:00:00.000Z" title="发表于 2023-10-01 00:00:00">2023-10-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/re/">re</a></span></div><div class="content">【re1】字符串对比：12345678910111213141516#include &lt;stdio.h&gt; // 引入标准输入输出库#include &lt;string.h&gt; // 引入字符串处理库int main() &#123; // 主函数    char input[100]; // 定义一个长度为100的字符数组，用于存放用户输入的字符串    printf(&quot;hello welcome to RE! \n&quot;); // 输出欢迎语句    printf(&quot;please input you flag:\n &quot;); // 提示用户输入flag    scanf(&quot;%s&quot;, input); // 获取用户输入的字符串    if (strcmp(input, &quot;QLNU&#123;he11ow_re!&#125;&quot;) == 0) &#123; // 判断用户输入的字符串是否等于&quot;QLNU&#123;he11ow_re!&#125;&quot;        printf(&q ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/08/11/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA---%E5%90%BE%E7%88%B1%E5%A4%8D%E7%8E%B0/" title="安卓逆向环境搭建---吾爱复现"><img class="post-bg" src="/img/wuai.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向环境搭建---吾爱复现"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/08/11/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA---%E5%90%BE%E7%88%B1%E5%A4%8D%E7%8E%B0/" title="安卓逆向环境搭建---吾爱复现">安卓逆向环境搭建---吾爱复现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-10T16:00:00.000Z" title="发表于 2023-08-11 00:00:00">2023-08-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/Android/">Android</a></span></div><div class="content">一、模拟器环境搭建1、工具下载下载一键收回雷电9官网地址：https://www.ldmnq.com/
+或者有我个人的工具包，在群里
+apk_debug2、apk_debug:https://yzhqvq.lanzoux.com/b02vfzqmh 密码:52pj
+选择下载里面的apk_debug文件
+2、模拟器开启root权限在模拟器设置中，选择root，然后重启就可以了
+
+3、安装并部署apk_debug（此文件也叫magic，也叫面具）
+将debug拖到模拟器中，自行安装
+安好之后图标是这样的：
+
+首次打开之后会有一个提示：请求root权限的，选择永久记住选择就可以了
+
+然后点击安装，之后弹出的所有请求权限都允许即可
+
+然后就来到了这个界面：
+
+此时不要动，然后稍等一会，然后按右下角的方块键，把这个进程给划掉。然后重启magic
+
+然后再按照刚才的步骤，点击安装–&gt;下一步
+然后弹出选择方式，就选择安装到系统分区
+
+然后显示all done就是代表安装完成
+
+纠错处理：显示installation failed
+这种情况是因为您下载的是最新版的模拟器，需要在设置中打开读写权限 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/05/26/%E5%88%9D%E6%AC%A1%E6%8E%A5%E8%A7%A6%E8%84%B1%E5%A3%B3/" title="初次接触脱壳"><img class="post-bg" src="/img/ke.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初次接触脱壳"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/26/%E5%88%9D%E6%AC%A1%E6%8E%A5%E8%A7%A6%E8%84%B1%E5%A3%B3/" title="初次接触脱壳">初次接触脱壳</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-25T16:00:00.000Z" title="发表于 2023-05-26 00:00:00">2023-05-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/re/">re</a></span></div><div class="content">程序壳（也称为 “程序包装器” 或 “加壳程序”）是一种软件工具，它可以将一个软件程序的可执行文件包装在另一个可执行文件中。
+借用PandaOS师傅的图片，简单了解一下压缩壳的原理：、
+
+栈栈（stack）是内存中分配的一段空间。
+向一个栈插入新元素又称作入（push）放到栈顶元素的上面，使之成为新的栈顶元素；
+从一个栈删除元素又称作出栈（pop），它把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。
+
+ESP定律esp也就是栈顶，ESP定律的核心是堆栈平衡，就是在程序执行压缩壳的时候，会把壳的OEP压入栈中，然后当加载完壳之后，又会释放出壳的入口点然后重新把源程序的OEP压入栈中，在脱壳的时候就可以通过查看栈的变化而定位到源程序的入口点然后jump出来源程序实现脱壳，具体的汇编操作是：pushad：是将所有32位通用寄存器压入堆栈
+IAT ( lmportAddress Table)，在可执行文件中使用其他DLL可执行文件的代码或数据，称为导入或者输入。
+在脱壳的过程中，导入表是很重要的东西，程序加壳的同时也改变了IAT表，所以在脱壳的时候也一定要修复IAT。如果找到了源程序的OEP ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/04/08/MISC%E5%B8%B8%E8%A7%81%E8%80%83%E7%82%B9%E6%80%BB%E7%BB%93/" title="MISC常见考点总结"><img class="post-bg" src="/img/misc.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MISC常见考点总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/04/08/MISC%E5%B8%B8%E8%A7%81%E8%80%83%E7%82%B9%E6%80%BB%E7%BB%93/" title="MISC常见考点总结">MISC常见考点总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-07T16:00:00.000Z" title="发表于 2023-04-08 00:00:00">2023-04-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/STUDY/">STUDY</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/STUDY/misc/">misc</a></span></div><div class="content">miscPNGLSB1将flag信息隐藏在颜色通道中，使用工具stegslove查看通道得到flag
+
+LSB2将flag隐藏到图片的颜色通道中，可以用stegslove使用Analyse-Data Extract来查看图片的
+一般都是勾选red，green，blue的0，0，0
+隐藏信息
+
+或者可以在kali中使用zsteg命令来查看图通道颜色信息
+
+关于zsteg的安装和使用可以借鉴这个帖子：
+https://blog.csdn.net/Amherstieae/article/details/107512398?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168092886016800186549081%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=168092886016800186549081&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WenWenJiang</div><div class="author-info__description">唉，ctf</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jiangwenwen066/jiangwenwen066.github.io"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">QQ：1625847503</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp"><img src="/img/20231.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给QLNU2023级新生第一次校赛题wp"/></a><div class="content"><a class="title" href="/2023/11/26/%E7%BB%99QLNU2023%E7%BA%A7%E6%96%B0%E7%94%9F%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A0%A1%E8%B5%9B%E9%A2%98wp/" title="给QLNU2023级新生第一次校赛题wp">给QLNU2023级新生第一次校赛题wp</a><time datetime="2023-11-25T16:00:00.000Z" title="发表于 2023-11-26 00:00:00">2023-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)"><img src="/img/android4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---算法复现以及协议复现(js、python)"/></a><div class="content"><a class="title" href="/2023/11/12/Android_04/" title="安卓逆向学习篇---算法复现以及协议复现(js、python)">安卓逆向学习篇---算法复现以及协议复现(js、python)</a><time datetime="2023-11-11T16:00:00.000Z" title="发表于 2023-11-12 00:00:00">2023-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用"><img src="/img/android3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---frida_server应用"/></a><div class="content"><a class="title" href="/2023/10/28/Android_03/" title="安卓逆向学习篇---frida_server应用">安卓逆向学习篇---frida_server应用</a><time datetime="2023-10-27T16:00:00.000Z" title="发表于 2023-10-28 00:00:00">2023-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置"><img src="/img/android2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---抓包证书配置"/></a><div class="content"><a class="title" href="/2023/10/26/Android02/" title="安卓逆向学习篇---抓包证书配置">安卓逆向学习篇---抓包证书配置</a><time datetime="2023-10-25T16:00:00.000Z" title="发表于 2023-10-26 00:00:00">2023-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用"><img src="/img/android1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向学习篇---Android studio环境搭建以及使用"/></a><div class="content"><a class="title" href="/2023/10/25/Android01/" title="安卓逆向学习篇---Android studio环境搭建以及使用">安卓逆向学习篇---Android studio环境搭建以及使用</a><time datetime="2023-10-24T16:00:00.000Z" title="发表于 2023-10-25 00:00:00">2023-10-25</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CTF/"><span class="card-category-list-name">CTF</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CTF/wp/"><span class="card-category-list-name">wp</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/STUDY/"><span class="card-category-list-name">STUDY</span><span class="card-category-list-count">13</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/STUDY/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/STUDY/misc/"><span class="card-category-list-name">misc</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/STUDY/re/"><span class="card-category-list-name">re</span><span class="card-category-list-count">7</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/STUDY/" style="font-size: 1.5em; color: #99a9bf">STUDY</a> <a href="/tags/CTF/" style="font-size: 1.1em; color: #999">CTF</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">14</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-11-28T07:17:52.143Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/big.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By WenWenJiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
